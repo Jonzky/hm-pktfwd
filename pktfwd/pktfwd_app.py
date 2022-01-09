@@ -82,11 +82,11 @@ class PktfwdApp:
     def set_variant_attributes(self, variant):
         self.variant = variant
         self.variant_attributes = variant_definitions[self.variant]
-        self.reset_pin = self.variant_attributes['RESET']
+        self.reset_pin = 23
         # reset_lgw.sh is called throughout this app without supplying
         # the reset pin as an argument. The script falls back to the
         # value in envvar RESET_LGW_RESET_PIN_ENV_KEY.
         os.environ[RESET_LGW_RESET_PIN_ENV_KEY] = str(self.reset_pin)
-        self.spi_bus = self.variant_attributes['SPIBUS']
+        self.spi_bus = "/dev/i2c-1"
         LOGGER.debug("Variant %s set with reset_pin %s and spi_bus %s" %
                      (self.variant, self.reset_pin, self.spi_bus))
