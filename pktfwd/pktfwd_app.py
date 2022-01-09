@@ -87,6 +87,6 @@ class PktfwdApp:
         # the reset pin as an argument. The script falls back to the
         # value in envvar RESET_LGW_RESET_PIN_ENV_KEY.
         os.environ[RESET_LGW_RESET_PIN_ENV_KEY] = str(self.reset_pin)
-        self.spi_bus = "/dev/i2c-1"
+        self.spi_bus = "spidev0.0"
         LOGGER.debug("Variant %s set with reset_pin %s and spi_bus %s" %
                      (self.variant, self.reset_pin, self.spi_bus))
