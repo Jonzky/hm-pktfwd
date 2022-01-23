@@ -74,5 +74,7 @@ RUN apt-get autoremove -y && \
 # Add python dependencies to PYTHONPATH
 ENV PYTHONPATH="${PYTHONPATH}:${PYTHON_DEPENDENCIES_DIR}"
 
+ENV WORKDIR /opt
+
 # Run pktfwd/__main__.py
 ENTRYPOINT ["/opt/start.sh"]
