@@ -66,6 +66,8 @@ COPY --from=pktfwd-builder "$PKTFWD_BUILDER_OUTPUT_DIR" "$PYTHON_DEPENDENCIES_DI
 
 COPY start.sh /opt
 
+RUN apt-get install wget
+
 # Cleanup
 RUN apt-get autoremove -y && \
     apt-get clean && \
