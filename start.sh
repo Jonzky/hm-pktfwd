@@ -11,4 +11,6 @@ else
       "${OVERRIDE_PKT_CONFIG_URL}"
 fi
 
+cp /opt/pktfwd/config/lora_templates_sx1302/local_conf.json /opt/local_conf.json
+
 /opt/sx1302/lora_pkt_fwd -c $CONFIG
