@@ -64,6 +64,8 @@ COPY --from=nebraltd/sx1302_hal:9a72ce59c22b0434bdbaf9091542a7d8419bddee "$SX130
 # Copy pktfwd python app dependencies
 COPY --from=pktfwd-builder "$PKTFWD_BUILDER_OUTPUT_DIR" "$PYTHON_DEPENDENCIES_DIR"
 
+COPY start.sh /opt
+
 # Cleanup
 RUN apt-get autoremove -y && \
     apt-get clean && \
@@ -73,4 +75,4 @@ RUN apt-get autoremove -y && \
 ENV PYTHONPATH="${PYTHONPATH}:${PYTHON_DEPENDENCIES_DIR}"
 
 # Run pktfwd/__main__.py
-ENTRYPOINT ["python3", "pktfwd"]
+ENTRYPOINT ["/opt/start.sh"]
